@@ -105,7 +105,8 @@ body {
 	color: #214682;
 }
 
-.chapter_list{
+.chapter_list_table{
+	width: 60%;
 	display: block;
 	margin-left: 25%;
 }
