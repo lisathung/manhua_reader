@@ -23,6 +23,7 @@ body {
 	position: sticky;
 	top: 0;
 	padding-top: 20px;
+	padding-bottom: 10px;
 	display: flex;
 	overflow: hidden;
 	margin: auto;
