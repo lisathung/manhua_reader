@@ -1,0 +1,30 @@
+/*section containing manga*/
+
+.mainFrame{
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	text-align: center;
+	padding-top: 50px;
+}
+
+.mainFrame h1{
+	font-size: 1rem;
+}
+
+.manga_menu{
+	position: sticky;
+	top: 0;
+	padding-top: 1px;
+}
+.select_chapter{
+	padding: 8px;
+}
+
+.menu_button{
+	color: white;
+	background-color: #2e86c1; 
+	padding: 8px;
+	font-weight: bold;
+	border-radius: 10px;
+}
