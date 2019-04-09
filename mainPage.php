@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+   include('session.php');
+?>
 <html>
 <head>
 	<title>Manhuwa Reader</title>
@@ -6,7 +8,6 @@
 	<link rel="stylesheet" type="text/css" href="css_files/mainPage.css">
 </head>
 <body>
-
 
 <div class="navbar">
 	<div class="logo"><a href="mainPage.html"><img src="images\logo.png"></a></div>
@@ -20,7 +21,32 @@
 	<div class="nav_right"> 
 		<!-- SEARCH BAR -->
 		<input type="text"  class="text" placeholder="Search...">
+		
+		<?php
+		if ($_SESSION['logged_in']===1){
+		?>	
+
+		<!-- logged in --> 
+		<div class="dropdown">
+			<button class="dropbtn">Dropdown
+			<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="#">Link 1</a>
+				<a href="#">Link 2</a>
+				<a href="#">Link 3</a>
+			</div>
+		</div>
+
+		<?php }else{   ?>
+
+		<!-- not logged in -->
+
+
 		<a class="login" href="login.html">SIGN IN</a>
+		<?php
+		}
+		?>
 	</div>
 </div>
 
@@ -28,7 +54,7 @@
 	<div class="new_manga">
 		<!-- Use databases to pull images and links to here -->
 		<div>
-			<a href="chapter_list.html"><img src="images\covers\ritsu.png">
+			<a class="manga_link" href="chapter_list.html"><img src="images\covers\ritsu.png">
 			<p><name>Kawaii Complex </name><br>
 			   Ruri Miyahara<br>
 			   Completed, 94 Chapters
@@ -36,7 +62,7 @@
 			</a>
 		</div>
 		<div>
-			<a href="mainpage.html"><img src="images\covers\naruto.png">
+			<a class="manga_link" href="mainpage.html"><img src="images\covers\naruto.png">
 			<p><name>Naruto</name><br>
 			   Masashi Kishimoto<br>
 			   Completed, 700 Chapters
@@ -44,7 +70,7 @@
 			</a>
 		</div>		
 		<div>
-			<a href="mainpage.html"><img src="images\covers\fairy_tale.png">
+			<a class="manga_link" href="mainpage.html"><img src="images\covers\fairy_tale.png">
 			<p><name>Fairy Tale</name><br>
 			   Hiro Mashima<br>
 			   Completed, 554 Chapters
@@ -52,7 +78,7 @@
 			</a>
 		</div>
 		<div>
-			<a href="mainpage.html"><img src="images\covers\mob.png">
+			<a class="manga_link" href="mainpage.html"><img src="images\covers\mob.png">
 			<p><name>Mob Psycho</name><br>
 			   ONE<br>
 			   Completed, 215 Chapters
@@ -60,7 +86,7 @@
 			</a>
 		</div>		
 		<div>
-			<a href="mainpage.html"><img src="images\covers\dragon_ball.png">
+			<a class="manga_link" href="mainpage.html"><img src="images\covers\dragon_ball.png">
 			<p><name>Dragon Ball</name><br>
 			   Akira Toriyama<br>
 			   Completed, 557 Chapters
@@ -68,7 +94,7 @@
 			</a>
 		</div>	
 		<div>
-			<a href="mainpage.html"><img src="images\covers\a_class.png">
+			<a class="manga_link" href="mainpage.html"><img src="images\covers\a_class.png">
 			<p><name>Assassination Classroom</name><br>
 			   Yuusei Matsui<br>
 			   Completed, 190 Chapters
@@ -76,7 +102,7 @@
 			</a>
 		</div>		
 		<div>
-			<a href="mainpage.html"><img src="images\covers\slam_dunk.png">
+			<a class="manga_link" href="mainpage.html"><img src="images\covers\slam_dunk.png">
 			<p><name>Slam Dunk</name><br>
 			   Takehiko Inoue<br>
 			   Completed, 278 Chapters
