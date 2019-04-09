@@ -10,7 +10,7 @@
 <body>
 
 <div class="navbar">
-	<div class="logo"><a href="mainPage.html"><img src="images\logo.png"></a></div>
+	<div class="logo"><a href="mainPage.php"><img src="images\logo.png"></a></div>
 
 	<!-- NAVIGATION LINKS -->
 	<div class="nav_left">
@@ -43,7 +43,7 @@
 		<!-- not logged in -->
 
 
-		<a class="login" href="login.html">SIGN IN</a>
+		<a class="login" href="login.php">SIGN IN</a>
 		<?php
 		}
 		?>

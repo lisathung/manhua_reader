@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Manhuwa Reader</title>
+	<link rel="stylesheet" type="text/css" href="css_files/basic.css">
+	<link rel="stylesheet" type="text/css" href="css_files/chapter_list.css">
+</head>
+<body>
+
+
+<div class="navbar">
+	<div class="logo"><a href="mainPage.php"><img src="images\logo.png"></a></div>
+
+	<!-- NAVIGATION LINKS -->
+	<div class="nav_left">
+		<a class="link" href="#home">HOME</a> 
+		<a class="link" href="#AllManga">ALL MANGA</a>
+		<a class="link" href="#New">LATEST</a>
+	</div>
+	<div class="nav_right"> 
+		<!-- SEARCH BAR -->
+		<input type="text"  class="text" placeholder="Search...">
+
+		<?php
+		if ($_SESSION['logged_in']===1){
+		?>	
+
+		<!-- logged in --> 
+		<div class="dropdown">
+			<button class="dropbtn">Dropdown
+			<i class="fa fa-caret-down"></i>
+			</button>
+			<div class="dropdown-content">
+				<a href="#">Link 1</a>
+				<a href="#">Link 2</a>
+				<a href="#">Link 3</a>
+			</div>
+		</div>
+
+		<?php }else{   ?>
+
+		<!-- not logged in -->
+
+
+		<a class="login" href="login.php">SIGN IN</a>
+		<?php
+		}
+		?>	
+	</div>
+</div>
+
+<div class="mainFrame">
+	<!-- Use databases to pull manga details-->
+	<div class="manga_details">
+		<div class="manga_image">
+			<img  src="images\covers\ritsu.png">
+		</div>
+		<div class="manga_title">
+			<h1>The Kawai Complex Guide to Manors and Hostel Behavior</h1>
+		</div>
+		<div class="manga_table">
+			<table>
+				<tr>
+					<td class="property_title">Name:</td>
+					<td>Kawaii Complex</td>
+				</tr>
+				<tr>
+					<td class="property_title">Status:</td>
+					<td>Completed</td>
+				</tr>
+				<tr>
+					<td class="property_title">Chapters:</td>
+					<td>94</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="chapter_list_table">
+		<table>
+			<tr class="table_header">
+				<td>About</td>
+			</tr>
+			<tr>
+
+				<td>
+				Kazunari Usa's dream to live away from his parents is fulfilled when they allow him to move into an old boarding house called Kawai Complex. With his landlady providing him meals and his parents covering his rent, Kazunari finally achieves the peaceful life he longs for, as he is ready to enter his first year at high school. Or so it seems...
+
+				Upon moving into the boarding house, Kazunari finds out that he has to share a room with resident masochist Shirosaki. He must also live under the same roof as Mayumi Nishikino, a drunkard with a hopeless love life, and Sayaka Watanabe, a seemingly innocent college student. Although he is surrounded by these unique characters, Kazunari still counts himself lucky to be living in the same building as Ritsu Kawai, a second-year student he has a crush on.
+
+				As Kazunari settles into the boarding house, he soon realizes that the inhabitants of Kawai Complex are bound to add a twist to the life he has been hoping to live.
+				</td>
+			</tr>
+			<tr class="table_header">
+				<td> Chapters </td>
+			</tr>
+			<tr>
+				<td><a href="reader.html">Chapter 1: </a> </td>
+			</tr>
+			<tr>
+				<td><a href="">Chapter 1: </a> <?php "<h1>asdfasdfasdfasdf</h1>;?></td>
+			</tr>
+			<tr>
+				<td><a href="">Chapter 1: </a> </td>
+			</tr>
+			<tr>
+				<td><a href="">Chapter 1: </a> </td>
+			</tr>
+			<tr>
+				<td><a href="">Chapter 1: </a> </td>
+			</tr>
+			<tr>
+				<td><a href="">Chapter 1: </a> </td>
+			</tr>
+			<tr>
+				<td><a href="">Chapter 1: </a> </td>
+			</tr>
+			<tr>
+				<td><a href="">Chapter 1: </a> </td>
+			</tr>
+			<tr>
+				<td><a href="">Chapter 1: </a> </td>
+			</tr>
+			<tr>
+				<td><a href="">Chapter 1: </a> </td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+</body>
+</html>
