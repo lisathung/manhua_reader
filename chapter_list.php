@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+	session_start();
+?>
 <html>
 <head>
 	<title>Manhuwa Reader</title>
@@ -20,32 +22,23 @@
 	<div class="nav_right"> 
 		<!-- SEARCH BAR -->
 		<input type="text"  class="text" placeholder="Search...">
-
 		<?php
-		if ($_SESSION['logged_in']===1){
+		if(isset($_SESSION['login_user'])){
 		?>	
 
 		<!-- logged in --> 
 		<div class="dropdown">
-			<button class="dropbtn">Dropdown
-			<i class="fa fa-caret-down"></i>
-			</button>
-			<div class="dropdown-content">
-				<a href="#">Link 1</a>
-				<a href="#">Link 2</a>
-				<a href="#">Link 3</a>
-			</div>
+			<a href="logout.php">Logout</a>
 		</div>
 
 		<?php }else{   ?>
 
 		<!-- not logged in -->
 
-
 		<a class="login" href="login.php">SIGN IN</a>
 		<?php
 		}
-		?>	
+		?>
 	</div>
 </div>
 
@@ -94,10 +87,10 @@
 				<td> Chapters </td>
 			</tr>
 			<tr>
-				<td><a href="reader.html">Chapter 1: </a> </td>
+				<td><a href="reader.php">Chapter 1: </a> </td>
 			</tr>
 			<tr>
-				<td><a href="">Chapter 1: </a> <?php "<h1>asdfasdfasdfasdf</h1>;?></td>
+				<td><a href="">Chapter 1: </a></td>
 			</tr>
 			<tr>
 				<td><a href="">Chapter 1: </a> </td>

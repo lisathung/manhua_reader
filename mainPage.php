@@ -1,5 +1,5 @@
 <?php
-   include('session.php');
+	session_start();
 ?>
 <html>
 <head>
@@ -21,27 +21,18 @@
 	<div class="nav_right"> 
 		<!-- SEARCH BAR -->
 		<input type="text"  class="text" placeholder="Search...">
-		
 		<?php
-		if ($_SESSION['logged_in']===1){
+		if (isset($_SESSION['login_user'])){
 		?>	
 
 		<!-- logged in --> 
 		<div class="dropdown">
-			<button class="dropbtn">Dropdown
-			<i class="fa fa-caret-down"></i>
-			</button>
-			<div class="dropdown-content">
-				<a href="#">Link 1</a>
-				<a href="#">Link 2</a>
-				<a href="#">Link 3</a>
-			</div>
+			<a href="logout.php">Logout</a>
 		</div>
 
 		<?php }else{   ?>
 
 		<!-- not logged in -->
-
 
 		<a class="login" href="login.php">SIGN IN</a>
 		<?php
@@ -50,11 +41,12 @@
 	</div>
 </div>
 
+
 <div class="mainFrame">
 	<div class="new_manga">
 		<!-- Use databases to pull images and links to here -->
 		<div>
-			<a class="manga_link" href="chapter_list.html"><img src="images\covers\ritsu.png">
+			<a class="manga_link" href="chapter_list.php"><img src="images\covers\ritsu.png">
 			<p><name>Kawaii Complex </name><br>
 			   Ruri Miyahara<br>
 			   Completed, 94 Chapters

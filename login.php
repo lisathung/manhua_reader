@@ -2,7 +2,6 @@
    include("php_files/config.php");
    session_start();
    $error = "";
-
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
       
@@ -20,10 +19,10 @@
 		
       if($count == 1) {
          $_SESSION['login_user'] = $myusername;
-         $_SESSION['logged_in'] = 1;
          header("location: mainPage.php");
       }else {
          $error = "Your Login Name or Password is invalid";
+         echo $error;
       }
    }
 ?>
@@ -50,32 +49,25 @@
       <!-- SEARCH BAR -->
       <input type="text"  class="text" placeholder="Search...">
       <?php
-      if ($_SESSION['logged_in']===1){
+      if (isset($_SESSION['login_user'])){
       ?> 
 
       <!-- logged in --> 
       <div class="dropdown">
-         <button class="dropbtn">Dropdown
-         <i class="fa fa-caret-down"></i>
-         </button>
-         <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
-            <a href="#">Link 3</a>
-         </div>
+         <a href="logout.php">Logout</a>         
       </div>
 
       <?php }else{   ?>
 
       <!-- not logged in -->
 
-
       <a class="login" href="login.php">SIGN IN</a>
       <?php
       }
-      ?>       
+      ?>
    </div>
 </div>
+
 
 <div class="mainFrame">
    <h2 class="page_header">
