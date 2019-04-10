@@ -16,7 +16,7 @@
       $count = mysqli_num_rows($result);
       
       // If result matched $myusername and $mypassword, table row must be 1 row
-		
+      
       if($count == 1) {
          $_SESSION['login_user'] = $myusername;
          header("location: mainPage.php");
@@ -70,23 +70,23 @@
 
 
 <div class="mainFrame">
-   <h2 class="page_header">
-      Hello! Please login.
-   </h2>
    <form class="login_box" method="post">
+      <!-- Username Field -->
       <div class="field">
          <label >Username</label>
          <input type="text" name="username">
       </div>
-      
+      <!-- Password Field -->
       <div class="field">
          <label class="password">Password</label>
          <input type="password" name="password">
       </div>
-
+      <!-- Login Button -->
       <input type="submit" class="login_button" value="Login">
    </form>
-   </div>
+   ?>
+   ?>
+</div>
 
 </body>
 </html>

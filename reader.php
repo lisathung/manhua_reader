@@ -27,14 +27,15 @@
 
 		<!-- logged in --> 
 		<div class="dropdown">
-			<a href="logout.php">Logout</a>			
+			<a href="logout.php">Logout</a>
+			<a href="userPage.php">User</a>			
 		</div>
 
 		<?php }else{   ?>
 
 		<!-- not logged in -->
 
-		<a class="login" href="login.php">SIGN IN</a>
+		<a class="login" href="loginPage.php">SIGN IN</a>
 		<?php
 		}
 		?>

@@ -1,6 +1,6 @@
 <?php
-   $_SESSION['login_user'] = "asdfasdf";
-   $_SESSION['logged_in'] = 10000;
+   $_SESSION['login_user'] = "";
+
    define('DB_SERVER', 'localhost:3306');
    define('DB_USERNAME', 'root');
    define('DB_PASSWORD', 'password');
