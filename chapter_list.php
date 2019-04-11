@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	$manhwa_name = $_GET['manhwa_name'];
+	echo "$manhwa_name";
 ?>
 <html>
 <head>

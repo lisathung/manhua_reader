@@ -1,4 +1,5 @@
 <?php
+	include 'php_files/config.php';
 	session_start();
 ?>
 <html>
@@ -46,8 +47,29 @@
 <div class="mainFrame">
 	<div class="new_manga">
 		<!-- Use databases to pull images and links to here -->
+		<?php
+		$file_path = "";
+		$manhwa_name = "";
+		$query_result =  mysqli_query($db,"SELECT * FROM manhwa_list");
+		//work on query result row by row
+		while ($row_users = mysqli_fetch_array($query_result)) {
+    		//output a row here
+			$manhwa_name = $row_users['manhwa_name'];
+			$file_path = $row_users['file_path'];
+    	?>
+    	<div>
+    		<?php echo ("<a class=manga_link href=chapter_list.php?manhwa_name=$manhwa_name><img src=$file_path></a>"); ?>
+			<p><name>Kawaii Complex </name><br>
+			   Ruri Miyahara<br>
+			   Completed, 94 Chapters
+			</p>
+			</a>
+		</div>
+		<?php
+		}
+		?>
 		<div>
-			<a class="manga_link" href="chapter_list.php"><img src="images\covers\ritsu.png">
+			<a class="manga_link" href="chapter_list.php?manhwa_name=kawaii_complex"><img src="images\covers\ritsu.png">
 			<p><name>Kawaii Complex </name><br>
 			   Ruri Miyahara<br>
 			   Completed, 94 Chapters
