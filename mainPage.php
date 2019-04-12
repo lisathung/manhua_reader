@@ -1,6 +1,13 @@
 <?php
 	include 'php_files/config.php';
 	session_start();
+
+	//Use databases to pull images and links
+	$cover_file_path = "";
+	$manhwa_name = "";
+	$manhwa_author = "";
+	$no_of_chapters = 0;
+	$query_result =  mysqli_query($db,"SELECT * FROM manhwa_list");
 ?>
 <html>
 <head>
@@ -46,33 +53,22 @@
 
 <div class="mainFrame">
 	<div class="new_manga">
-		<!-- Use databases to pull images and links to here -->
-		<?php
-		$file_path = "";
-		$manhwa_name = "";
-		$manhwa_author = "";
-		$no_of_chapters = 0;
-		$query_result =  mysqli_query($db,"SELECT * FROM manhwa_list");
+		<div class="manhwa_thumbnail">
+		<?php 
 		//work on query result row by row
 		while ($row_users = mysqli_fetch_array($query_result)) {
-    		//output a row here
+			//output a row here
 			$manhwa_name = $row_users['manhwa_name'];
-			$file_path = $row_users['file_path'];
+			$cover_file_path = $row_users['cover_file_path'];
 			$manhwa_author = $row_users['manhwa_author'];
 			$no_of_chapters = $row_users["no_of_chapters"];
-    	?>
-    	<div>
-    		<?php 
-    		echo ("<a class=manga_link href='chapter_list.php?manhwa_name=$manhwa_name'?><img src=".$file_path.">"); 
+			echo ("<a class='manga_link' href='chapter_list.php?manhwa_name=$manhwa_name'?><img src=".$cover_file_path.">"); 
 			echo ("<p><name>$manhwa_name</name><br>");
 			echo ("$manhwa_author<br>");
 			echo ("$no_of_chapters Chapters");
 			echo ("</p></a>");
-			?>
+		}?>
 		</div>
-		<?php
-		}
-		?>
 	</div>
 </div>
 

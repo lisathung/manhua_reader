@@ -2,8 +2,8 @@
 
 .manga_details{
 	display: block;
+	margin: auto;
 	margin-top: 20px;
-	margin-left: 25%;
 	width: 60%;
 	height: 300px;
 }
@@ -28,10 +28,17 @@
 .chapter_list_table{
 	width: 60%;
 	display: block;
-	margin-left: 25%;
+	margin: auto;
 }
 
 .table_header{
 	font-weight: bold;
 	font-size: 1.5rem;
+}
+
+.chapter_list{
+	overflow: scroll;
+	height: 500px;
+	width: 59%;
+	margin: auto;
 }

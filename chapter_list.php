@@ -1,7 +1,26 @@
 <?php
 	include 'php_files/config.php';
 	session_start();
+
+	//initialise varibles
+	$cover_file_path = "";
+	$manhwa_author = "";
+	$no_of_chapters = 0;
+	$manhwa_details = "";
 	$manhwa_name = $_GET['manhwa_name'];
+	
+	//Use databases to pull images and links
+	$query_result =  mysqli_query($db,"SELECT * FROM manhwa_list WHERE manhwa_name='$manhwa_name'");
+
+	//work on query result row by row
+	$row_users = mysqli_fetch_array($query_result);
+
+	//extract details and output
+	$manhwa_details = $row_users['manhwa_details'];
+	$manhwa_author = $row_users['manhwa_author'];
+	$no_of_chapters = $row_users["no_of_chapters"];
+	$cover_file_path = $row_users['cover_file_path'];
+
 ?>
 <html>
 <head>
@@ -48,23 +67,7 @@
 <div class="mainFrame">
 	<div class="manga_details">
 		<div class="manga_image">
-		<!-- Use databases to pull images and links to here -->
-		<?php
-		$file_path = "";
-		$manhwa_author = "";
-		$no_of_chapters = 0;
-		$manhwa_details = "";
-		$query_result =  mysqli_query($db,"SELECT * FROM manhwa_list WHERE manhwa_name='$manhwa_name'");
-		//work on query result row by row
-		$row_users = mysqli_fetch_array($query_result);
-		//extract details and output
-		$file_path = $row_users['file_path'];
-		$manhwa_author = $row_users['manhwa_author'];
-		$no_of_chapters = $row_users["no_of_chapters"];
-		$manhwa_details = $row_users['manhwa_details'];
-    	
-		echo ("<img  src=$file_path>");
-		?>
+			<?php echo ("<img src=$cover_file_path>"); ?>
 		</div>
 		<div class="manga_title">
 			<?php echo ("<h1>$manhwa_name</h1>"); ?>
@@ -99,17 +102,17 @@
 			<tr class="table_header">
 				<td> Chapters </td>
 			</tr>
-			
-			<?php
-				for($i = 1;$i <= $no_of_chapters; $i++){
-					echo ("<tr>");
-					echo ("<td><a href='reader.php?manhwa_name=$manhwa_name?chapter_no=$i'>Chapter $i: </a> </td>");
-					echo ("</tr>");
-				}
-			?>
-			
 		</table>
 	</div>
+	<!-- Loading chapterlinks -->
+	<?php
+		echo ("<div class='chapter_list'>");
+		
+		for($i = 1;$i <= $no_of_chapters; $i=$i+1){
+			echo ("<a href='reader.php?manhwa_name=$manhwa_name&chapter_no=$i'>Chapter: $i </a> <br>");
+		}
+		echo ("</div>");
+	?>
 </div>
 
 </body>

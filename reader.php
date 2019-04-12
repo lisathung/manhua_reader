@@ -1,6 +1,37 @@
 <?php
+	include 'php_files/config.php';
 	session_start();
-?><html>
+
+	//Initialise variables
+	$chapter_file_path = "";
+	$manhwa_author = "";
+	$no_of_chapters = 0;
+	$manhwa_details = "";
+
+	//get details from chapter list page
+	$manhwa_name = $_GET['manhwa_name'];
+	$chapter_no = (int)$_GET['chapter_no'];
+
+	//Use databases to pull images and links
+	$query_result =  mysqli_query($db,"SELECT * FROM manhwa_list WHERE manhwa_name='$manhwa_name'");
+
+	//work on query result row by row
+	$row_users = mysqli_fetch_array($query_result);
+
+	//extract details and output
+	$manhwa_author = $row_users['manhwa_author'];
+	$no_of_chapters = $row_users["no_of_chapters"];
+	$manhwa_details = $row_users['manhwa_details'];
+	$manhwa_chapter_path = $row_users['chapter_file_path']."chapter$chapter_no";
+
+	//previous and next chapter numbers
+	$prev = $chapter_no - 1;
+	$next = $chapter_no + 1;
+
+	echo $manhwa_chapter_path;
+
+?>
+<html>
 <head>
 	<title>Manhuwa Reader</title>
 	<link rel="stylesheet" type="text/css" href="css_files/basic.css">
@@ -46,19 +77,39 @@
 <div class="mainFrame">
 	<div class="manga_menu">
 		<div class="manga_info">
-			<h1>The Kawai Complex Guide to Manors and Hostel Behavior</h1>
+			<?php echo("<h1>$manhwa_name</h1>"); ?>
 		</div>
-			<select class="select_chapter">
-				<option value="">Chapter 1</option>
-				<option value="">Chapter 2</option>
+		<form action="/reader.php" method="GET">
+			<?php
+			//Hidden submit value to keep track of current manhwa  
+			echo("<input type='hidden' name='manhwa_name' value='$manhwa_name'/>"); 
+			?>
+			<!-- Chapter Selection -->
+			<select class="select_chapter" name="chapter_no" onchange="this.form.submit()">
+				<?php
+				for($i=1 ; $i<=$no_of_chapters ; $i++){
+					if ($chapter_no == $i){
+						echo ("<option value=$i selected>Chapter $i</option>"); 
+					}else{
+						echo ("<option value=$i>Chapter $i</option>");
+					}
+				}
+				?>
 			</select>
-			<button class="menu_button">Prev Chapter</button>
-			<button class="menu_button">Next Chapter</button>
+			<?php
+			echo ("<button class='menu_button' name='chapter_no' value=$prev' >Prev Chapter</button>");
+			echo ("<button class='menu_button' name='chapter_no' value=$next'>Next Chapter</button>");
+			?>
+		</form>
 	</div>
 	<div class="manga_pages">
-		<img src="images/manga/kawaii_complex/page.png">
-		<img src="images/manga/kawaii_complex/page.png">
-		<img src="images/manga/kawaii_complex/page.png">
+		<!-- Use Glob data structure to pull all images from a single chapter folder -->
+		<?php
+		$images = glob("$manhwa_chapter_path/*[.png,.jpg]");
+		foreach($images as $image) {
+			echo ("<img src='$image'/><br>");
+		}
+		?>
 	</div>
 </div>
 
