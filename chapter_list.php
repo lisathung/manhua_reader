@@ -1,7 +1,7 @@
 <?php
+	include 'php_files/config.php';
 	session_start();
 	$manhwa_name = $_GET['manhwa_name'];
-	echo "$manhwa_name";
 ?>
 <html>
 <head>
@@ -46,27 +46,42 @@
 </div>
 
 <div class="mainFrame">
-	<!-- Use databases to pull manga details-->
 	<div class="manga_details">
 		<div class="manga_image">
-			<img  src="images\covers\ritsu.png">
+		<!-- Use databases to pull images and links to here -->
+		<?php
+		$file_path = "";
+		$manhwa_author = "";
+		$no_of_chapters = 0;
+		$manhwa_details = "";
+		$query_result =  mysqli_query($db,"SELECT * FROM manhwa_list WHERE manhwa_name='$manhwa_name'");
+		//work on query result row by row
+		$row_users = mysqli_fetch_array($query_result);
+		//extract details and output
+		$file_path = $row_users['file_path'];
+		$manhwa_author = $row_users['manhwa_author'];
+		$no_of_chapters = $row_users["no_of_chapters"];
+		$manhwa_details = $row_users['manhwa_details'];
+    	
+		echo ("<img  src=$file_path>");
+		?>
 		</div>
 		<div class="manga_title">
-			<h1>The Kawai Complex Guide to Manors and Hostel Behavior</h1>
+			<?php echo ("<h1>$manhwa_name</h1>"); ?>
 		</div>
 		<div class="manga_table">
 			<table>
 				<tr>
 					<td class="property_title">Name:</td>
-					<td>Kawaii Complex</td>
-				</tr>
+					<?php echo("<td>$manhwa_name</td>"); ?>
+				</tr>				
 				<tr>
-					<td class="property_title">Status:</td>
-					<td>Completed</td>
+					<td class="property_title">Author:</td>
+					<?php echo("<td>$manhwa_author</td>"); ?>
 				</tr>
 				<tr>
 					<td class="property_title">Chapters:</td>
-					<td>94</td>
+					<?php echo("<td>$no_of_chapters</td>"); ?>
 				</tr>
 			</table>
 		</div>
@@ -77,48 +92,22 @@
 				<td>About</td>
 			</tr>
 			<tr>
-
 				<td>
-				Kazunari Usa's dream to live away from his parents is fulfilled when they allow him to move into an old boarding house called Kawai Complex. With his landlady providing him meals and his parents covering his rent, Kazunari finally achieves the peaceful life he longs for, as he is ready to enter his first year at high school. Or so it seems...
-
-				Upon moving into the boarding house, Kazunari finds out that he has to share a room with resident masochist Shirosaki. He must also live under the same roof as Mayumi Nishikino, a drunkard with a hopeless love life, and Sayaka Watanabe, a seemingly innocent college student. Although he is surrounded by these unique characters, Kazunari still counts himself lucky to be living in the same building as Ritsu Kawai, a second-year student he has a crush on.
-
-				As Kazunari settles into the boarding house, he soon realizes that the inhabitants of Kawai Complex are bound to add a twist to the life he has been hoping to live.
+					<?php echo ("$manhwa_details"); ?>
 				</td>
 			</tr>
 			<tr class="table_header">
 				<td> Chapters </td>
 			</tr>
-			<tr>
-				<td><a href="reader.php">Chapter 1: </a> </td>
-			</tr>
-			<tr>
-				<td><a href="">Chapter 1: </a></td>
-			</tr>
-			<tr>
-				<td><a href="">Chapter 1: </a> </td>
-			</tr>
-			<tr>
-				<td><a href="">Chapter 1: </a> </td>
-			</tr>
-			<tr>
-				<td><a href="">Chapter 1: </a> </td>
-			</tr>
-			<tr>
-				<td><a href="">Chapter 1: </a> </td>
-			</tr>
-			<tr>
-				<td><a href="">Chapter 1: </a> </td>
-			</tr>
-			<tr>
-				<td><a href="">Chapter 1: </a> </td>
-			</tr>
-			<tr>
-				<td><a href="">Chapter 1: </a> </td>
-			</tr>
-			<tr>
-				<td><a href="">Chapter 1: </a> </td>
-			</tr>
+			
+			<?php
+				for($i = 1;$i <= $no_of_chapters; $i++){
+					echo ("<tr>");
+					echo ("<td><a href='reader.php?manhwa_name=$manhwa_name?chapter_no=$i'>Chapter $i: </a> </td>");
+					echo ("</tr>");
+				}
+			?>
+			
 		</table>
 	</div>
 </div>

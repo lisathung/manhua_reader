@@ -50,83 +50,29 @@
 		<?php
 		$file_path = "";
 		$manhwa_name = "";
+		$manhwa_author = "";
+		$no_of_chapters = 0;
 		$query_result =  mysqli_query($db,"SELECT * FROM manhwa_list");
 		//work on query result row by row
 		while ($row_users = mysqli_fetch_array($query_result)) {
     		//output a row here
 			$manhwa_name = $row_users['manhwa_name'];
 			$file_path = $row_users['file_path'];
+			$manhwa_author = $row_users['manhwa_author'];
+			$no_of_chapters = $row_users["no_of_chapters"];
     	?>
     	<div>
-    		<?php echo ("<a class=manga_link href=chapter_list.php?manhwa_name=$manhwa_name><img src=$file_path></a>"); ?>
-			<p><name>Kawaii Complex </name><br>
-			   Ruri Miyahara<br>
-			   Completed, 94 Chapters
-			</p>
-			</a>
+    		<?php 
+    		echo ("<a class=manga_link href='chapter_list.php?manhwa_name=$manhwa_name'?><img src=".$file_path.">"); 
+			echo ("<p><name>$manhwa_name</name><br>");
+			echo ("$manhwa_author<br>");
+			echo ("$no_of_chapters Chapters");
+			echo ("</p></a>");
+			?>
 		</div>
 		<?php
 		}
 		?>
-		<div>
-			<a class="manga_link" href="chapter_list.php?manhwa_name=kawaii_complex"><img src="images\covers\ritsu.png">
-			<p><name>Kawaii Complex </name><br>
-			   Ruri Miyahara<br>
-			   Completed, 94 Chapters
-			</p>
-			</a>
-		</div>
-		<div>
-			<a class="manga_link" href="mainpage.html"><img src="images\covers\naruto.png">
-			<p><name>Naruto</name><br>
-			   Masashi Kishimoto<br>
-			   Completed, 700 Chapters
-			</p>
-			</a>
-		</div>		
-		<div>
-			<a class="manga_link" href="mainpage.html"><img src="images\covers\fairy_tale.png">
-			<p><name>Fairy Tale</name><br>
-			   Hiro Mashima<br>
-			   Completed, 554 Chapters
-			</p>
-			</a>
-		</div>
-		<div>
-			<a class="manga_link" href="mainpage.html"><img src="images\covers\mob.png">
-			<p><name>Mob Psycho</name><br>
-			   ONE<br>
-			   Completed, 215 Chapters
-			</p>
-			</a>
-		</div>		
-		<div>
-			<a class="manga_link" href="mainpage.html"><img src="images\covers\dragon_ball.png">
-			<p><name>Dragon Ball</name><br>
-			   Akira Toriyama<br>
-			   Completed, 557 Chapters
-			</p>
-			</a>
-		</div>	
-		<div>
-			<a class="manga_link" href="mainpage.html"><img src="images\covers\a_class.png">
-			<p><name>Assassination Classroom</name><br>
-			   Yuusei Matsui<br>
-			   Completed, 190 Chapters
-			</p>
-			</a>
-		</div>		
-		<div>
-			<a class="manga_link" href="mainpage.html"><img src="images\covers\slam_dunk.png">
-			<p><name>Slam Dunk</name><br>
-			   Takehiko Inoue<br>
-			   Completed, 278 Chapters
-			</p>
-			</a>
-		</div>		
-	</div>
-	<div class="trending">
-		
 	</div>
 </div>
 
