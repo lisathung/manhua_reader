@@ -88,40 +88,34 @@ body {
 
 }
 
-/* The container <div> - needed to position the dropdown content */
+.dropbtn {
+  border: none;
+  cursor: pointer;
+}
+
 .dropdown {
   position: relative;
   display: inline-block;
-  overflow: visible;
 }
 
- /* Dropdown Button */
-.dropbtn {
-}
-
-/* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  min-width: 160px;
-  background-color: white;
-  border-style: solid;
-  border-width: 1px;
-
+	right: 0;
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 160px;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
 }
 
-/* Links inside the dropdown */
 .dropdown-content a {
-	color: #b3b3b3;
-	display: block;
-	padding: 2px;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
 }
 
-.dropdown-content a:hover {
-      color: #2e86c1; 
-}
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-	display: block;
-}
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}

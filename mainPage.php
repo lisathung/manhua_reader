@@ -35,14 +35,34 @@
 
 		<!-- logged in -->
 		<div class="dropdown">
-			<img src="images/user.png" class="dropbtn">
-			<div class="dropdown-content">
-				<a href="userPage.php">Account Details</a>
-				<a href="userPage.php">Favourite Manga</a>
-				<a href="logout.php">Logout</a>
-			</div>
-		</div> 
+		  <img onclick="myFunction()" class="dropbtn" src="images/user.png"></img>
+		  <div id="myDropdown" class="dropdown-content">
+		    <a href="userPage.php">My Account</a>
+		    <a href="logout.php">Logout</a>
+		  </div>
+		</div>
 
+		<script>
+		/* When the user clicks on the button, 
+		toggle between hiding and showing the dropdown content */
+		function myFunction() {
+		  document.getElementById("myDropdown").classList.toggle("show");
+		}
+
+		// Close the dropdown if the user clicks outside of it
+		window.onclick = function(event) {
+		  if (!event.target.matches('.dropbtn')) {
+		    var dropdowns = document.getElementsByClassName("dropdown-content");
+		    var i;
+		    for (i = 0; i < dropdowns.length; i++) {
+		      var openDropdown = dropdowns[i];
+		      if (openDropdown.classList.contains('show')) {
+		        openDropdown.classList.remove('show');
+		      }
+		    }
+		  }
+		}
+		</script>
 		<?php }else{   ?>
 		<a class="login" href="loginPage.php">SIGN IN</a>
 		
