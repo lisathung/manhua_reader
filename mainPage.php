@@ -21,8 +21,7 @@
 	<div class="logo"><a href="mainPage.php"><img src="images\logo.png"></a></div>
 
 	<!-- NAVIGATION LINKS -->
-	<div class="nav_left">
-		<a class="link" href="#home">HOME</a> 
+	<div class="nav_left"> 
 		<a class="link" href="#AllManga">ALL MANGA</a>
 		<a class="link" href="#New">LATEST</a>
 	</div>
@@ -34,16 +33,20 @@
 		if (isset($_SESSION['login_user'])){
 		?>	
 
-		<!-- logged in --> 
+		<!-- logged in -->
 		<div class="dropdown">
-			<a href="logout.php">Logout</a>
-			<a href="userPage.php">User</a>
-		</div>
+			<img src="images/user.png" class="dropbtn">
+			<div class="dropdown-content">
+				<a href="userPage.php">Account Details</a>
+				<a href="userPage.php">Favourite Manga</a>
+				<a href="logout.php">Logout</a>
+			</div>
+		</div> 
 
 		<?php }else{   ?>
-
-		<!-- not logged in -->
 		<a class="login" href="loginPage.php">SIGN IN</a>
+		
+		<!-- not logged in -->
 		<?php
 		}
 		?>

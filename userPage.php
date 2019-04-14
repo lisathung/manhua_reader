@@ -21,8 +21,7 @@
    <div class="logo"><a href="mainPage.php"><img src="images\logo.png"></a></div>
 
    <!-- NAVIGATION LINKS -->
-   <div class="nav_left">
-      <a class="link" href="#home">HOME</a> 
+   <div class="nav_left"> 
       <a class="link" href="#AllManga">ALL MANGA</a>
       <a class="link" href="#New">LATEST</a>
    </div>
@@ -33,11 +32,15 @@
       if (isset($_SESSION['login_user'])){
       ?> 
 
-      <!-- logged in --> 
+      <!-- logged in -->
       <div class="dropdown">
-         <a href="logout.php">Logout</a>
-         <a href="userPage.php">User</a>         
-      </div>
+         <img src="images/user.png" class="dropbtn">
+         <div class="dropdown-content">
+            <a href="userPage.php">Account Details</a>
+            <a href="userPage.php">Favourite Manga</a>
+            <a href="logout.php">Logout</a>
+         </div>
+      </div> 
 
       <?php }else{   ?>
 
@@ -52,23 +55,21 @@
 
 
 <div class="mainFrame">
-   <div class="user_box">
-      <div class="personal_info">
-         <img class ="profile_pic" src="images/profile_pic.jpg">
-         <table>
+   <div class="user_menu">
+      <div class="user_sub_menu">
+         <table class="menu_table">
             <tr>
-               <td class="username">Username:</td>
+               <td><img class ="profile_pic" src="images/profile_pic.jpg"></td>
             </tr>
             <tr>
-               <td class="email">Email:</td>
+               <td>lisathung</td>
             </tr>
+            <tr>
+               <td>name@example.com</td>
+            </tr>                 
          </table>
       </div>
-      <div class="suscription_details">
-         suscription details
-      </div>
    </div>
-
 </div>
 
 </body>

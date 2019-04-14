@@ -45,7 +45,6 @@
 
 	<!-- NAVIGATION LINKS -->
 	<div class="nav_left">
-		<a class="link" href="#home">HOME</a> 
 		<a class="link" href="#AllManga">ALL MANGA</a>
 		<a class="link" href="#New">LATEST</a>
 	</div>
@@ -56,11 +55,15 @@
 		if (isset($_SESSION['login_user'])){
 		?>	
 
-		<!-- logged in --> 
+		<!-- logged in -->
 		<div class="dropdown">
-			<a href="logout.php">Logout</a>
-			<a href="userPage.php">User</a>			
-		</div>
+			<img src="images/user.png" class="dropbtn">
+			<div class="dropdown-content">
+				<a href="userPage.php">Account Details</a>
+				<a href="userPage.php">Favourite Manga</a>
+				<a href="logout.php">Logout</a>
+			</div>
+		</div> 
 
 		<?php }else{   ?>
 
@@ -84,7 +87,7 @@
 			//Hidden submit value to keep track of current manhwa  
 			echo("<input type='hidden' name='manhwa_name' value='$manhwa_name'/>"); 
 			?>
-			<!-- Chapter Selection -->
+			<!-- Chapter Selection menu generated using for loop-->
 			<select class="select_chapter" name="chapter_no" onchange="this.form.submit()">
 				<?php
 				for($i=1 ; $i<=$no_of_chapters ; $i++){
