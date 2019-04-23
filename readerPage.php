@@ -1,35 +1,7 @@
 <?php
 	include 'php_files/config.php';
 	session_start();
-
-	//Initialise variables
-	$chapter_file_path = "";
-	$manhwa_author = "";
-	$no_of_chapters = 0;
-	$manhwa_details = "";
-
-	//get details from chapter list page
-	$manhwa_name = $_GET['manhwa_name'];
-	$chapter_no = (int)$_GET['chapter_no'];
-
-	//Use databases to pull images and links
-	$query_result =  mysqli_query($db,"SELECT * FROM manhwa_list WHERE manhwa_name='$manhwa_name'");
-
-	//work on query result row by row
-	$row_users = mysqli_fetch_array($query_result);
-
-	//extract details and output
-	$manhwa_author = $row_users['manhwa_author'];
-	$no_of_chapters = $row_users["no_of_chapters"];
-	$manhwa_details = $row_users['manhwa_details'];
-	$manhwa_chapter_path = $row_users['chapter_file_path']."chapter$chapter_no";
-
-	//previous and next chapter numbers
-	$prev = $chapter_no - 1;
-	$next = $chapter_no + 1;
-
-	echo $manhwa_chapter_path;
-
+	include 'php_files/reader.php';
 ?>
 <html>
 <head>
@@ -82,7 +54,7 @@
 		<div class="manga_info">
 			<?php echo("<h1>$manhwa_name</h1>"); ?>
 		</div>
-		<form action="/reader.php" method="GET">
+		<form action="/readerPage.php" method="GET">
 			<?php
 			//Hidden submit value to keep track of current manhwa  
 			echo("<input type='hidden' name='manhwa_name' value='$manhwa_name'/>"); 

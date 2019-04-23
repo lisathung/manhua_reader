@@ -111,8 +111,8 @@
 	<?php
 		echo ("<div class='chapter_list'>");
 		
-		for($i = 1;$i <= $no_of_chapters; $i=$i+1){
-			echo ("<a href='reader.php?manhwa_name=$manhwa_name&chapter_no=$i'>Chapter: $i </a> <br>");
+		for($i = 1;$i < $no_of_chapters; $i=$i+1){
+			echo ("<a href='readerPage.php?manhwa_name=$manhwa_name&chapter_no=$i'>Chapter: $i </a> <br>");
 		}
 		echo ("</div>");
 	?>
