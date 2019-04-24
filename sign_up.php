@@ -6,24 +6,26 @@
       // username and password sent from form 
       
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+      //$mypassword = mysqli_real_escape_string($db,$_POST['password']); 
       
-      $sql = "SELECT * FROM users_passwords WHERE username='$myusername' and password='$mypassword' ";
+      $sql = "SELECT * FROM users_passwords WHERE username='$myusername' ";
 
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
+
       $count = mysqli_num_rows($result);
       
-      // If result matched $myusername and $mypassword, table row must be 1 row
+      // If result matched $myusername , table row must be 1 row
       
       if($count == 1) {
-         $_SESSION['login_user'] = $myusername;
-         header("location: mainPage.php");
-      }else {
-         $error = "Your Login Name or Password is invalid";
-         //alert box using javascript
+         $error = "username already exist";
          echo "<script type='text/javascript'>alert('$error');</script>";
+      }else {
+        $myusername=$_POST['username'];
+        $mypassword=$_POST['password'];
+        $sql = "INSERT INTO users_passwords VALUE ($myusername,$mypassword)";
+        $_SESSION['login_user'] = mysqli_real_escape_string($db,$_POST['username']);
+        header("location: mainPage.php");
       }
    }
 ?>
@@ -83,9 +85,10 @@
          <input type="password" name="password">
       </div>
       <!-- Login Button -->
-      <input type="submit" class="login_button" value="Login">
-      <input type="Button" class="login_button" value="Sign Up" onclick="location.href = 'sign_up.php'";>
+      <input type="submit" class="login_button" value="sign_up">
    </form>
+   ?>
+   ?>
 </div>
 
 </body>
