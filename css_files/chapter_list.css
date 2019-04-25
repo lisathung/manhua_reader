@@ -2,6 +2,7 @@
 
 .manga_details{
 	display: block;
+	overflow: hidden;
 	margin: auto;
 	margin-top: 20px;
 	width: 60%;
@@ -15,6 +16,12 @@
 .manga_image{
 	float: left;
 	padding-right: 50px;
+	
+}
+
+.manga_image > img {
+	max-height: 300px;
+
 }
 
 .manga_table{

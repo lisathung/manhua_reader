@@ -1,5 +1,4 @@
 <?php
-   session_start();
    //get details from chapter list page
    $manhwa_name = $_GET['manhwa_name'];
    $chapter_no = (int)$_GET['chapter_no'];

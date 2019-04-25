@@ -1,7 +1,6 @@
 <?php
 	include 'php_files/config.php';
 	session_start();
-
 	//initialise varibles
 	$cover_file_path = "";
 	$manhwa_author = "";
@@ -35,32 +34,52 @@
 	<div class="logo"><a href="mainPage.php"><img src="images\logo.png"></a></div>
 
 	<!-- NAVIGATION LINKS -->
-	<div class="nav_left">
+	<div class="nav_left"> 
 		<a class="link" href="#AllManga">ALL MANGA</a>
 		<a class="link" href="#New">LATEST</a>
 	</div>
 	<div class="nav_right"> 
+		
 		<!-- SEARCH BAR -->
 		<input type="text"  class="text" placeholder="Search...">
 		<?php
-		if(isset($_SESSION['login_user'])){
+		if (isset($_SESSION['login_user'])){
 		?>	
 
 		<!-- logged in -->
 		<div class="dropdown">
-			<img src="images/user.png" class="dropbtn">
-			<div class="dropdown-content">
-				<a href="userPage.php">Account Details</a>
-				<a href="userPage.php">Favourite Manga</a>
-				<a href="logout.php">Logout</a>
-			</div>
-		</div> 
+		  <img onclick="myFunction()" class="dropbtn" src="images/user.png"></img>
+		  <div id="myDropdown" class="dropdown-content">
+		    <a href="userPage.php">My Account</a>
+		    <a href="logout.php">Logout</a>
+		  </div>
+		</div>
 
+		<script>
+		/* When the user clicks on the button, 
+		toggle between hiding and showing the dropdown content */
+		function myFunction() {
+		  document.getElementById("myDropdown").classList.toggle("show");
+		}
+
+		// Close the dropdown if the user clicks outside of it
+		window.onclick = function(event) {
+		  if (!event.target.matches('.dropbtn')) {
+		    var dropdowns = document.getElementsByClassName("dropdown-content");
+		    var i;
+		    for (i = 0; i < dropdowns.length; i++) {
+		      var openDropdown = dropdowns[i];
+		      if (openDropdown.classList.contains('show')) {
+		        openDropdown.classList.remove('show');
+		      }
+		    }
+		  }
+		}
+		</script>
 		<?php }else{   ?>
-
-		<!-- not logged in -->
-
 		<a class="login" href="loginPage.php">SIGN IN</a>
+		
+		<!-- not logged in -->
 		<?php
 		}
 		?>
@@ -108,14 +127,13 @@
 		</table>
 	</div>
 	<!-- Loading chapterlinks -->
-	<?php
-		echo ("<div class='chapter_list'>");
-		
+	<div class='chapter_list'>
+		<?php
 		for($i = 1;$i < $no_of_chapters; $i=$i+1){
-			echo ("<a href='readerPage.php?manhwa_name=$manhwa_name&chapter_no=$i'>Chapter: $i </a> <br>");
+			echo("<a href='readerPage.php?manhwa_name=$manhwa_name&chapter_no=$i'>Chapter: $i </a> <br>");
 		}
-		echo ("</div>");
-	?>
+		?>
+	</div>
 </div>
 
 </body>

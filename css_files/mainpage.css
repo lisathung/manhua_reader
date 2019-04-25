@@ -32,13 +32,18 @@
 .manhwa_thumbnail{
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	/*justify-content: center;*/
 }
 
 .manhwa_thumbnail img{
 	height: 200px;
 	width: 140px;
 	padding: 0px 5px 10px 10px;
+}
+
+.manga_link p{
+	padding: 10px
+
 }
 
 .manga_link a:hover{

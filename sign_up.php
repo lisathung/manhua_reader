@@ -1,6 +1,6 @@
 <?php
    include("php_files/config.php");
-   session_start();
+   include("php_files/signup.php");
 ?>
 
 <html>
@@ -46,7 +46,7 @@
 
 
 <div class="mainFrame">
-   <div class="chibi_cat"><img src="images/chibi_cat.png" > Please login</img></div>
+   <div class="chibi_cat"><img src="images/chibi_cat.png" > Please enter your details</img></div>
    <form class="login_box" method="post">
       <!-- Username Field -->
       <div class="field">
@@ -59,8 +59,7 @@
          <input type="password" name="password">
       </div>
       <!-- Login Button -->
-      <input type="submit" class="login_button" value="Login">
-      <input type="Button" class="login_button" value="Sign Up" onclick="location.href = 'sign_up.php'";>
+      <input type="submit" class="login_button" value="sign up">
    </form>
 </div>
 
