@@ -6,7 +6,7 @@
       // username and password sent from form 
       
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      //$mypassword = mysqli_real_escape_string($db,$_POST['password']); 
+      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
       
       $sql = "SELECT * FROM users_passwords WHERE username='$myusername' ";
 
@@ -21,9 +21,9 @@
          $error = "username already exist";
          echo "<script type='text/javascript'>alert('$error');</script>";
       }else {
-        $myusername=$_POST['username'];
-        $mypassword=$_POST['password'];
-        $sql = "INSERT INTO users_passwords VALUE ($myusername,$mypassword)";
+        echo "<script type='text/javascript'>alert('$myusername');</script>";
+        $sql = "INSERT INTO users_passwords VALUES ('$myusername','$mypassword')";
+        $result=mysqli_query($db,$sql);
         $_SESSION['login_user'] = mysqli_real_escape_string($db,$_POST['username']);
         header("location: mainPage.php");
       }
@@ -85,10 +85,8 @@
          <input type="password" name="password">
       </div>
       <!-- Login Button -->
-      <input type="submit" class="login_button" value="sign_up">
+      <input type="submit" class="login_button" value="sign up">
    </form>
-   ?>
-   ?>
 </div>
 
 </body>
